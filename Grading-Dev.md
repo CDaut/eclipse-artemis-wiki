@@ -11,7 +11,7 @@
 The architectural idea is based on having three plugins and an API plugin over which those plugins communicate.
 That allows for more easily exchanging view, core/ Backend or client and also clearly defines borders, making parallel work easier and reducing coupling.
 
-<img src="https://github.com/kit-sdq/programming-lecture-eclipse-artemis-grading/blob/main/docs/architecture.png" alt="Backend state machine" width="600"/>
+<img src="https://github.com/kit-sdq/programming-lecture-eclipse-artemis/blob/main/docs/architecture.png" alt="Backend state machine" width="600"/>
 
 #### Core/ Backend
 
@@ -123,7 +123,7 @@ There are three Controllers:
 ### Backend State Machine
 
 For keeping the Backend state sane and consistent, we use a state machine. That also allows for greying out buttons in the gui:
-![Backend State Machine](https://github.com/kit-sdq/programming-lecture-eclipse-artemis-grading/blob/main/docs/Zustandshaltung-Automat.png)
+![Backend State Machine](https://github.com/kit-sdq/programming-lecture-eclipse-artemis/blob/main/docs/Zustandshaltung-Automat.png)
 
 * On every state-modifying call to *edu.kit.kastel.sdq.eclipse.grading.core.SystemwideController* (represented by transitions (edges) in the state machine graph), the according transition is applied in the state machine. If it isn't possible, the transition is not applied and the GUI is notified.
 * Transitions are designed to represent button clicks in the GUI, which in turn are mapped to one Backend call each.
