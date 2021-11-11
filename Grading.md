@@ -5,6 +5,16 @@
 * Our GitHub CI run builds eclipse distros (Linux / Windows) containing the plugin. Download it [here](https://github.com/kit-sdq/programming-lecture-eclipse-artemis/actions/workflows/products.yml)
 * In case you are using OS X, you might need to add our Update Site to run the plugin. It can be found [here](https://kit-sdq.github.io/programming-lecture-eclipse-artemis/)
 
+### Mac OS User 
+* On first open it will still say it can't be opened (cf. [#129](https://github.com/kit-sdq/programming-lecture-eclipse-artemis/issues/129)).
+
+![Gatekeeper blocking Eclipse](https://user-images.githubusercontent.com/57954163/141015847-310c44eb-a06a-49d0-ac43-f16ef580251a.png)
+
+* But with the signed distribution you can get around that by going to `System Preferences > Security & Privacy` and click `Open Anyway`. 
+
+![SecurityAndPrivacy](https://user-images.githubusercontent.com/57954163/141016010-22ad6da0-1c1d-4572-b0c1-96cc165b8ce1.png)
+
+
 ### Working with the GUI
 The GUI consists (mainly) of two parts:
 
