@@ -39,6 +39,7 @@ For creating a new annotation do the following:
 * Mark the lines, where the annotation should be
 * Click on the mistake button in the certain rating group
 * After that you should see the new annotation in the assessment annotation view.
+* **Note: If you Shift-Click or Middle-Click a button, you can provide additional information for the student.** 
 
 <img src="https://github.com/kit-sdq/programming-lecture-eclipse-artemis/blob/main/docs/grading_tab.png" alt="Grading tab with the certain rating groups and mistake types" width="400" />
 
