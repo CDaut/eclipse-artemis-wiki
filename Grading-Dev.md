@@ -3,9 +3,51 @@
 ## Development
 
 ### Setting up Eclipse
+1. You should use "eclipse for eclipse commiters" for PlugIn development. This will make a lot of things easier.
 
-1. Use the docs/workingTargetDefinition.target to create the target platform needed for this project.
-2. Adjust your Run Configuration accordingly ("Plugins->Select All" will do)
+2. Use the `docs/workingTargetDefinition.target` to create the target platform needed for this project.
+
+    - Drag and drop the `docs/workingTargetDefinition.target` file into eclipse and hit the "reload target platform" link in the top right corner.
+    - Select "OSGi - REST" as the target platform and reload again.
+3. API Baseline
+    - Navigate to "Window > Preferences > Plug-in Development > API Baselines" (This will only be available in the Eclipse for eclipse comitters build).
+    - Click "Add Baseline...".
+    - Select "A target platform", then click "Next".
+    - Enter a name for the target platform.
+    - As a target platform you will want to use the "OSGi - REST" platform. Select it and hit "Finish".
+    - Click "Apply". Eclipse now builds something. This might take some time.
+    - Click "Apply and close".
+4. Open project
+    - Clone this repository into your eclipse workspace.
+    - Use File > Open Project from Filesystem to open the project.
+    - Hit the "Directory..." button and select the repository cloned two steps ago. Now some (While writing this 13) modules should show up below.
+    - Hit "Select All" (which might not actually select all) and then "Finish".
+    - You now have the project imported. You might see some errors. The errors for the "jvm" module can be ignored. The project builds fine anyways.
+5. Create a run configuration
+    - Navigate to `edu.kit.kastel.sdq.eclipse.grading.client` and open the `plugin.xml` file.
+    - Click the small green arrow in the top right corner
+    - This will either build the PlugIn (you are done) or it will crash (you have to continue with the next step).
+6. Fix run configuration
+    - There is an issue where some dependencies are duplicated which prevents the PlugIn from building. 
+    - To resolve this edit the run configuration by clicking "Run > Run Configurations" and selecting the tab "Eclipse Application > Eclipse Application"
+    - Navigate to the Plug-ins tab.
+    - Change the "Launch with" dropdown to "plug-ins selected below only". A long list of plugins will appear.
+    - Hit "Apply" and then "Run". This will most likely not work though
+    - Fix 1: (Fast but unlikely to work. Try this first.)
+        - Click the "Select All" button on the right and then apply and run again.
+        - This has worked on some machines, not all though
+    - Fix 2: (Tedious but worked more often)
+        - Click the "Validate Plug-ins" button.
+        - A long lost of errors appears. Expand the errors until you find one of the type "2 versions of singleton \<plugin name> exist".
+        - This is a duplicate plugin.
+        - Find the plugin in the plugin list above. There should be 2 entries for the name with different versions.
+        - Deselect the plugin with that name and the **lower** version, leaving the newer one active.
+        - Again, apply and run.
+        - Repeat this for all plugins that exhibit this kind of error.
+        - At some point you will be left with only about three issues that are of a different kind and another eclipse instance will start. At that point you are done and you can start developing the grading tool plugin.
+
+(Tested on x86_64 arch linux, 1.1.22)
+
 
 ### Architecture
 The architectural idea is based on having three plugins and an API plugin over which those plugins communicate.
